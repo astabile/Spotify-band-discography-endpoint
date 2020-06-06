@@ -1,8 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use App\Application\Actions\User\ListUsersAction;
-use App\Application\Actions\User\ViewUserAction;
 use App\Application\Actions\Album\ListAlbumsAction;
 use App\Application\Actions\Album\ViewAlbumAction;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -24,10 +22,5 @@ return function (App $app) {
     $app->group('/albums', function (Group $group) {
         $group->get('', ListAlbumsAction::class);
         $group->get('/{id}', ViewAlbumAction::class);
-    });
-
-    $app->group('/users', function (Group $group) {
-        $group->get('', ListUsersAction::class);
-        $group->get('/{id}', ViewUserAction::class);
     });
 };
