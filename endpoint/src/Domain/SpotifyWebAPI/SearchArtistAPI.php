@@ -22,7 +22,7 @@ class SearchArtistAPI extends ObjectAPI
         $items = $searchAPI->getArtistItems();
 
         if(count($items) == 0)
-            return null;
+            die();
         
         return $items[0];
     }

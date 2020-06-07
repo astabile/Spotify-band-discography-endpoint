@@ -6,6 +6,7 @@ namespace App\Application;
 
 use App\Domain\SpotifyWebAPI\SearchArtistAPI;
 use App\Domain\SpotifyWebAPI\TokenAPI;
+use App\Domain\SpotifyWebAPI\AlbumAPI;
 use App\Domain\Album\Album;
 use App\Domain\Album\Cover;
 use App\Domain\SpotifyWebAPI\SearchAPI;
@@ -55,7 +56,7 @@ class SpotifyWebAPI implements ISpotifyWebAPI
      */
     private function getAccessToken(): string
     {
-        if($this->token->isValidToken())
+        if ($this->token->isValidToken())
             return $this->token->getAccessToken();
 
         $client = new Client(['base_uri' => 'https://accounts.spotify.com']);
@@ -97,7 +98,7 @@ class SpotifyWebAPI implements ISpotifyWebAPI
         ]);
 
         $json = $response->getBody()->getContents();
-        
+
         $search = new SearchArtistAPI();
         $search->map($json);
 
@@ -140,14 +141,19 @@ class SpotifyWebAPI implements ISpotifyWebAPI
         $artist = $searchArtistResult->getFistArtist();
 
         $albums = $this->getAlbumsByArtistId($artist->getId());
-        
-        return $albums;
-
 
         $result = [];
-        foreach($albums as $album)
-        {
-            $album = new Album('asd', $id, 1, new Cover(1,2,'asd'));
+        foreach ($albums as $albumAPI) {
+            $name = $albumAPI->getName();
+            $releaseDate = $albumAPI->getReleaseDate();
+            $totalTracks = $albumAPI->getTotalTracks();
+
+            $cover = $albumAPI->getCover();
+            $height = $cover->getHeight();
+            $width = $cover->getWidth();
+            $url = $cover->getUrl();
+
+            $album = new Album($name, $releaseDate, $totalTracks, new Cover($height, $width, $url));
             array_push($result, $album);
         }
 

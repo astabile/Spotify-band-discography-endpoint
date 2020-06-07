@@ -21,6 +21,5 @@ return function (App $app) {
 
     $app->group('/albums', function (Group $group) {
         $group->get('', ListAlbumsAction::class);
-        $group->get('/{id}', ViewAlbumAction::class);
     });
 };
