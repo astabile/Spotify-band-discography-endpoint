@@ -8,11 +8,14 @@ Built with:
 * Slim: http://www.slimframework.com/
 * Guzzle: http://docs.guzzlephp.org/
 
-Download and run the application:
+Download the application. Install local composer dependencies. Run the application:
 
 ```
 git clone https://github.com/astabile/Spotify-band-discography-endpoint.git
-cd endpoint; php -S localhost:8080 -t public public/index.php
+cd Spotify-band-discography-endpoint/endpoint
+composer install
+php -S localhost:8080 -t public public/index.php
 ```
 
-Listening `http://localhost:8080` in your browser.
+Listening localhost in your browser...
+Example: `http://localhost:8080/api/v1/albums?q=Malmsteen`.
