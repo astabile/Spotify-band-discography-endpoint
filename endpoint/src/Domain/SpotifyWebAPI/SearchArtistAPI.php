@@ -21,8 +21,10 @@ class SearchArtistAPI extends ObjectAPI
         
         $items = $searchAPI->getArtistItems();
 
-        if(count($items) == 0)
+        if(count($items) == 0) {
+            echo "Unknown artist. Try again.";
             die();
+        }
         
         return $items[0];
     }

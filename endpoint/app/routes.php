@@ -19,7 +19,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->group('/albums', function (Group $group) {
+    $app->group('/api/v1/albums', function (Group $group) {
         $group->get('', ListAlbumsAction::class);
     });
 };

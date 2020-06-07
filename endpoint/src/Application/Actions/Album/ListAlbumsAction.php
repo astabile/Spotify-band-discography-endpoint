@@ -15,6 +15,12 @@ class ListAlbumsAction extends AlbumAction
     {
 
         $artistName = (string) $this->request->getQueryParams()['q'];
+        
+        if($artistName == '') {
+            echo 'Empty artist. Try again.';
+            die();
+        }
+        
         $albums = $this->spotifyWebAPI->getAlbumsByArtistName($artistName);
 
         return $this->respondWithData($albums);

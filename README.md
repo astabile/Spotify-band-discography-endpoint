@@ -2,7 +2,7 @@
 
 Using the Spotify API creates an endpoint to which by entering the name of the band an array of the entire discography is obtained.
 
-Previously Installed:
+Built with:
 
 * Composer: https://getcomposer.org/download/
 * Slim: http://www.slimframework.com/
@@ -11,7 +11,8 @@ Previously Installed:
 Download and run the application:
 
 ```
-cd app; php -S localhost:8080 -t public public/index.php
+git clone https://github.com/astabile/Spotify-band-discography-endpoint.git
+cd endpoint; php -S localhost:8080 -t public public/index.php
 ```
 
-Open `http://localhost:8080` in your browser.
+Listening `http://localhost:8080` in your browser.

@@ -59,11 +59,11 @@ class TokenAPI extends ObjectAPI
 
         if ($this->access_token == '')
             return false;
-        /*
+        
         $now = new Datetime();
         if($now > $this->expiration_time)
             return false;
-        */
+        
         return true;
     }
 }
