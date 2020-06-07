@@ -1,9 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Application\Actions\Album;
 
+use App\Domain\SpotifyWebAPI\TokenAPI;
 use Psr\Http\Message\ResponseInterface as Response;
+use GuzzleHttp\Client;
 
 class ListAlbumsAction extends AlbumAction
 {
@@ -12,9 +15,7 @@ class ListAlbumsAction extends AlbumAction
      */
     protected function action(): Response
     {
-        $albums = $this->albumRepository->findAll();
-
-        $this->logger->info("Albums list was viewed.");
+        $albums = $this->spotifyWebAPI->getAlbumsByArtistName("Yngwie Malmsteen");
 
         return $this->respondWithData($albums);
     }
